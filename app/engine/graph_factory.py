@@ -44,8 +44,9 @@ def create_agent_node(agent: AgentModel):
         
         # Inject this agent's unique database prompt at the very beginning of the context
         system_message = SystemMessage(content=agent.system_prompt)
-        human_message = HumanMessage(content=f"Please execute your task based on the conversation history and your system prompt.")
-        full_context = [system_message] + conversation_history + [human_message]
+        human_message = HumanMessage(content=conversation_history[-1].content if conversation_history else "No user input provided.")
+        # human_message = HumanMessage(content=f"Please execute your task based on the conversation history and your system prompt.")
+        full_context = [system_message] + [human_message]
         
         # Invoke the LLM
         response = llm.invoke(full_context)
