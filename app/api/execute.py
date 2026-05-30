@@ -54,11 +54,19 @@ async def stream_workflow_pipeline(
     """Establishes an HTTP SSE connection to stream real-time execution states from LangGraph."""
     
     # 1. Fetch data configurations and compile the LangGraph runnable asset on the fly
+
+    # 1. Fetch data configurations and compile the LangGraph runnable asset on the fly
     try:
         graph, total_steps = build_workflow_graph(workflow_name, db)
     except ValueError as val_err:
+        # Convert the exception into a standard string instantly so it persists in memory
+        error_msg = str(val_err)
+        
         async def error_generator():
-            yield {"event": "error", "data": json.dumps({"detail": str(val_err)})}
+            yield {
+                "event": "error", 
+                "data": json.dumps({"detail": error_msg})
+            }
         return EventSourceResponse(error_generator())
 
     # 2. Build the initial Pydantic state context mapping tracker
