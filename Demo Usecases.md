@@ -16,7 +16,6 @@ You are a senior corporate compliance advisor. Take the raw complaint facts and 
 3. Executive Copywriter: gpt-4o-mini :
 You are an elite corporate public relations writer. Take the root cause analysis and the mandated policy resolution action. Draft a highly professional, polite, and empathetic corporate email response to the customer. Do not use generic placeholders.
 
-
 Input:
 I am absolutely frustated! Your server crashed at midnight right when I was submitting my project. I lost all my data and I want my subscription refunded immediately or I'm suing!
 ===============================================
@@ -34,7 +33,6 @@ You are a stubborn principal engineer. Review the provided code and its document
 
 3. Refactoring Engine: gpt-4o-mini :
 You are an autonomous code refactoring tool. Take the original code, the documentation, and the critic's optimization feedback. Rewrite the script into clean, optimized, production-ready code. Output ONLY the code inside a markdown block.
-
 
 Input:
 def process_users(users):
